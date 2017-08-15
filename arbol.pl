@@ -34,3 +34,9 @@ sobrino(X,Y):-hermano(Z,Y),madre(Z,X).
 tio(X,Y):-sobrino(Y,X).
 primo(X,Y):-tio(X,Z),padre(Z,Y),not(X=Y).
 primo(X,Y):-tio(X,Z),madre(Z,Y),not(X=Y).
+
+%             consultas a realizar
+%  hermano(jhon,viviana),hermano(jhon,diana).
+%  ancestros(manuel,dania); ancestros(manuel,diego).
+%  tio(jhon,veronica),not(tio(viviana,diego)).
+%  hermano(jairo,jhon).
