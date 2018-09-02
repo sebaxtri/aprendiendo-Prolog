@@ -72,7 +72,13 @@ penultimo([_|Resto],R):-
 %?- penultimo([a,b,c,d,e],R).          R=d
 %----------------------------------------------------------------------------------------------------------------
 %(F)
+my_remove_one_element(X, [X|Xs], Xs).
 
+my_remove_one_element(X, [Y|Ys], [Y|Zs]):-
+          my_remove_one_element(X, Ys, Zs).
+%PREGUNTA:                                             RESPUESTA:
+%?- my_remove_one_element(b,[a,b,c,d,e,f],X).          X = [a, c, d, e, f]
+%?- my_remove_one_element(e,[a,b,c,d,e,f],X).          X = [a, b, c, d, f]
 %-----------------------------------------------------------------------------------------------------------------
 %(G)
 my_n_element([Y|_], 1, Y).
