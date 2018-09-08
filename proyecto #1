@@ -1,42 +1,73 @@
-%sebas
+%=============================BASE DE CONOCIMIENTO=====================
+%SEXO
 sexo(sebas,h).
-edad(sebas,22).
-estatura(sebas,1.70).
-interes(sebas,[cine,caminar,comer]).
-cualidades(sebas,[tierno,atento,inteligente]).
-defectos(sebas,[malgenio,desordenado,peresoza]).
-%mary
 sexo(mary,m).
-edad(mary,21).
-estatura(mary,1.60).
-interes(mary,[cine,caminar,comer]).
-cualidades(mary,[bondad,humilde,responsable]).
-defectos(mary,[inseguro,negativo,intolerante]).
-%alexis
 sexo(alexis,h).
-edad(alexis,33).
-estatura(alexis,1.80).
-interes(alexis,[deporte,acampar,playa]).
-cualidades(alexis,[humilde,sencillo,responsable]).
-defectos(alexis,[impuntual,imprudente,iracundo]).
-%dani
 sexo(dani,m).
-edad(dani,31).
-estatura(dani,1.60).
-interes(dani,[deporte,acampar,playa]).
-cualidades(dani,[ternura,honesta,tolerante]).
-defectos(dani,[imprudente,fria,insegura]).
-%sergio
 sexo(sergio,h).
-edad(sergio,23).
-estatura(sergio,1.80).
-interes(sergio,[series,moto,bicicleta]).
-cualidades(sergio,[obtimista,tolerante,inteligente]).
-defectos(sergio,[mujeriego,negativo,peresozo]).
-%daniela
 sexo(daniela,m).
+%EDAD
+edad(sebas,22).
+edad(mary,21).
+edad(alexis,33).
+edad(dani,31).
+edad(sergio,23).
 edad(daniela,20).
+%ESTATURA
+estatura(sebas,1.70).
+estatura(mary,1.60).
+estatura(alexis,1.80).
+estatura(dani,1.60).
+estatura(sergio,1.80).
 estatura(daniela,1.70).
+%INTERECES
+interes(sebas,[cine,caminar,comer]).
+interes(mary,[cine,caminar,comer]).
+interes(alexis,[deporte,acampar,playa]).
+interes(dani,[deporte,acampar,fiestera]).
+interes(sergio,[series,moto,bicicleta]).
 interes(daniela,[series,motos,bicicleta]).
+%CUALIDADES
+cualidades(sebas,[tierno,atento,inteligente]).
+cualidades(mary,[bondad,humilde,responsable]).
+cualidades(alexis,[humilde,sencillo,responsable]).
+cualidades(dani,[ternura,honesta,tolerante]).
+cualidades(sergio,[obtimista,tolerante,inteligente]).
 cualidades(daniela,[optimista,tolerante,inteligente]).
+%DEFECTOS
+defectos(sebas,[malgenio,desordenado,peresoza]).
+defectos(mary,[inseguro,negativo,intolerante]).
+defectos(alexis,[impuntual,imprudente,iracundo]).
+defectos(dani,[imprudente,fria,insegura]).
+defectos(sergio,[mujeriego,negativo,peresozo]).
 defectos(daniela,[impuntual,peresoza,imprudente]).
+%INTERECES QUE BUSCA EN OTRA PERSONA
+interes_que_busca(daniela,[series,moto,bicicleta]).
+interes_que_busca(sergio,[seies,moto,bicicleta]).
+interes_que_busca(dani,[deporte,acampar,fiesta]).
+interes_que_busca(mary,[cine,caminar,comer]).
+interes_que_busca(alexis,[deporte,acampar,playa]).
+interes_que_busca(sebas,[cine,caminar,comer]).
+%CUALIDADES QUE BUSCA EN OTRA PERSONA
+interes_cualidades(daniela,[aventurero,pervertido,musculoso]).
+interes_cualidades(sergio,[inteligente,segura,puntual]).
+interes_cualidades(dani,[humilde,sencillo,respnsable]).
+interes_cualidades(mary,[tierno,atento,bondadozo]).
+interes_cualidades(alexis,[ternura,honesta,tolerante]).
+interes_cualidades(sebas,[bondad,humilde,responsable]).
+%DEFECTOS QUE ACEPTARIA EN UNA PERSONA
+defectos_que_acepta(danieala,[malgenio,imprudente,desorganizado]).
+defectos_que_acepta(sergio,[insegura,desorganizado,malgenio]).
+defectos_que_acepta(dani,[imprudente,canzon,peresozo]).
+defectos_que_acepta(mary,[desordenado,perezoso,intenzo]).
+defectos_que_acepta(alexis,[imprudente,insegura,intenzo]).
+defectos_que_acepta(sebas,[inseguro,perezoso,fiestera]).
+
+% ========================================REGLAS=====================
+
+pareja(X,Y,_):-
+    sexo(X,X1),
+    sexo(Y,Y1),
+    X1\==Y1
+    .
+
