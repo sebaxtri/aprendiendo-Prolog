@@ -70,4 +70,15 @@ pareja(X,Y,_):-
     sexo(Y,Y1),
     X1\==Y1
     .
-
+ pareja(X,Y,_):-
+    edad(X,X1),
+    edad(Y,Y1),
+    Z2 is X1-Y1,
+    Z3 is abs(Z2),
+    Z3=<10.
+pareja(X,Y,_):-
+    estatura(X,X1),
+    estatura(Y,Y1),
+    Z2 is X1-Y1,
+    Z3 is abs(Z2),
+    Z3=<0.20.
