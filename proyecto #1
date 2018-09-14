@@ -77,7 +77,7 @@ defectos_soporta(X,Y):-
     defectos_que_acepta(X,X1),
     defectos(Y,Y1),
     semejansa(X1,Y1,C),
-    write("         los defectos que soporta soporta  "),write(X),write("  y tiene  "),write(Y),write("   son: "),
+    write("         los defectos que soporta  "),write(X),write("  y tiene  "),write(Y),write("   son: "),
     write(C),nl,nl,nl,write("
     Trabajo desarrollado por: Juan Sebastian Gomez Diaz
     Contacto: j.gomez@utp.edu.co
