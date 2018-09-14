@@ -65,20 +65,74 @@ defectos_que_acepta(sebas,[inseguro,perezoso,fiestera]).
 
 % ========================================REGLAS=====================
 
-pareja(X,Y,_):-
+contar(_,[],"=").
+contar(X,[X|_],C):- !, C = X.
+contar(X,[_|L],C):- contar(X,L,C).
+semejansa([],_,[]).
+semejansa([X1|X2],Y,C):-
+    contar(X1,Y,C1),
+    semejansa(X2,Y,C2),
+    C = [C1|C2].
+defectos_soporta(X,Y):-
+    defectos_que_acepta(X,X1),
+    defectos(Y,Y1),
+    semejansa(X1,Y1,C),
+    write("         los defectos que soporta soporta  "),write(X),write("  y tiene  "),write(Y),write("   son: "),
+    write(C),nl,nl,nl,write("
+    Trabajo desarrollado por: Juan Sebastian Gomez Diaz
+    Contacto: j.gomez@utp.edu.co
+    UNIVERSIDAD TECNOLOGICA DE PEREIRA").
+
+cualidades_que_busca(X,Y):-
+    interes_cualidades(X,X1),
+    cualidades(Y,Y1),
+    semejansa(X1,Y1,C),
+    write("         cualidades que busca "),write(X),write(" y tiene "),write(Y),write(" son:  "),
+    write(C),nl,
+    defectos_soporta(X,Y) .
+
+
+actividades_en_comun(X,Y):-
+    interes_que_busca(X,X1),
+    interes(Y,Y1),
+    semejansa(X1,Y1,C),
+    write("         Las actividades que busca  "),write(X),write(" y tiene "),write(Y),write(" son:  "),
+    write(C),nl,
+    cualidades_que_busca(X,Y).
+
+pareja1(X,Y):-
+    (   estatura(X,X1),
+    estatura(Y,Y1),
+    Z2 is X1-Y1,
+    Z3 is abs(Z2),
+    Z3=<0.20,
+    writeln("                                  su estatura es perfecta"));
+    actividades_en_comun(X,Y).
+pareja(X,Y):-
     sexo(X,X1),
     sexo(Y,Y1),
-    X1\==Y1
-    .
- pareja(X,Y,_):-
+    X1 == Y1,
+    writeln("
+
+    El mismo sexo no puede hacer pareja
+    "),!.
+pareja(X,Y):-
+    (
+    write("
+    ================BIENVENIDO AL PROGRAMA DE COMPATIBILIDAD DEL DOCTOR CORAZON======================================
+    _El programa le dira que cosas en comun tiene usted con la persona que desea medir su compatibilidad, pero no te_
+    _hagas el listo, el programa esta diseñado para solo medir la compatibilidad de hombres y mujeres, y no de hombre
+    _ha hombre, (lo sentimos por no ser incluyentes, espere en nuevas versiones la funcion de emparejar el mismosexo).
+    _siguiendo con el tema, este programa le dira si tienen una edad ideal no mayor a 10 años, si su estatura va______
+    _deacuerdo a la estatura de la otra persona. Ademas de eso le dira si las cosas que usted busca en una pareja las_
+    _tiene la otra..........
+
+"),
     edad(X,X1),
     edad(Y,Y1),
     Z2 is X1-Y1,
     Z3 is abs(Z2),
-    Z3=<10.
-pareja(X,Y,_):-
-    estatura(X,X1),
-    estatura(Y,Y1),
-    Z2 is X1-Y1,
-    Z3 is abs(Z2),
-    Z3=<0.20.
+    Z3=<10,
+    writeln("                                  su edad es perfecta"));
+    pareja1(X,Y).
+
